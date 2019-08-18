@@ -1,0 +1,4 @@
+package = hello
+headers = hello.h
+compilerOpts.osx = -I.
+linkerOpts.osx = -L.
