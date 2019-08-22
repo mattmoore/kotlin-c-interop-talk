@@ -1,4 +1,4 @@
-build: static
+build: shared
 
 static: libhello-static cinterop-static kotlin-static
 
