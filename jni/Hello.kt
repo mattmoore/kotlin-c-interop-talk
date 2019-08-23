@@ -1,6 +1,6 @@
 class Hello {
   init {
-    System.loadLibrary("hello")
+    System.loadLibrary("hello_jni")
   }
   external fun hello(name: String): String
 }
