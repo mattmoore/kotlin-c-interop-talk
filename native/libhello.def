@@ -1,0 +1,9 @@
+package = hello
+
+headers = hello.h
+
+compilerOpts.osx = -I/usr/local/include
+linkerOpts.osx = -L/usr/local/lib
+
+libraryPaths = /usr/local/lib
+staticLibraries = libhello.a

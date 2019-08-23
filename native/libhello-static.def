@@ -1,9 +1,0 @@
-package = hello
-
-headers = hello.h
-
-compilerOpts.osx = -I.
-linkerOpts.osx = -L.
-
-staticLibraries = libhello.a
-libraryPaths = build
