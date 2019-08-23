@@ -12,4 +12,4 @@ clean:
 	@echo "Cleaned."
 
 run:
-	@java -jar -Djava.library.path=/usr/local/lib build/Greeter.jar
+	@java -jar -Djava.library.path=/usr/local/lib build/Greeter.jar ${ARGS}
