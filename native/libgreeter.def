@@ -1,9 +1,9 @@
-package = hello
+package = greeter
 
-headers = hello.h
+headers = greeter.h
 
 compilerOpts.osx = -I/usr/local/include
 linkerOpts.osx = -L/usr/local/lib
 
 libraryPaths = /usr/local/lib
-staticLibraries = libhello.a
+staticLibraries = libgreeter.a

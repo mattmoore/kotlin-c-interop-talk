@@ -8,23 +8,23 @@ prepare:
 
 cinterop: prepare
 	@echo "Building cinterop."
-	@cinterop -def libhello.def -o build/libhello.klib
+	@cinterop -def libgreeter.def -o build/libgreeter.klib
 
 kotlin-shared: prepare
 	@echo "Building Kotlin code."
 	@kotlinc-native \
 		-o build/program \
-		-l build/libhello.klib \
-		-linker-options /usr/local/lib/libhello.dylib \
+		-l build/libgreeter.klib \
+		-linker-options /usr/local/lib/libgreeter.dylib \
 		*.kt
 
 kotlin-static: prepare
 	@echo "Building Kotlin code."
-	@kotlinc-native -o build/program -l build/libhello.klib *.kt
+	@kotlinc-native -o build/program -l build/libgreeter.klib *.kt
 
 clean:
 	@rm -rf build
 	@echo "Cleaned."
 
 run:
-	@build/program.kexe
+	@build/program.kexe ${ARGS}

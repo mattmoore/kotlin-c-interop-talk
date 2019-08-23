@@ -1,6 +1,6 @@
 import kotlinx.cinterop.*
-import hello.*
+import greeter.*
 
-fun main() {
-  println(hello("Matt")?.toKString())
+fun main(args: Array<String>) {
+  println(hello(args.get(0))?.toKString())
 }
