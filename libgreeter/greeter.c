@@ -1,4 +1,4 @@
-#include "hello.h"
+#include "greeter.h"
 
 char * hello(const char * name) {
   char * helloBuffer = (char *)malloc(0);
