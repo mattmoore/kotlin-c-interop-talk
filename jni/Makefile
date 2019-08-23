@@ -5,11 +5,11 @@ prepare:
 
 kotlin: prepare
 	@echo "Building Kotlin code."
-	@kotlinc-jvm -include-runtime -d build/Hello.jar *.kt
+	@kotlinc-jvm -include-runtime -d build/Greeter.jar *.kt
 
 clean:
 	@rm -rf build
 	@echo "Cleaned."
 
 run:
-	@java -jar -Djava.library.path=/usr/local/lib build/Hello.jar
+	@java -jar -Djava.library.path=/usr/local/lib build/Greeter.jar

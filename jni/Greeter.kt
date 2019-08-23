@@ -1,6 +1,6 @@
-class Hello {
+class Greeter {
   init {
-    System.loadLibrary("hello_jni")
+    System.loadLibrary("greeter_jni")
   }
 
   external fun hello(name: String): String

@@ -1,7 +1,7 @@
-#include "hello_jni.h"
-#include "hello.h"
+#include "greeter_jni.h"
+#include "greeter.h"
 
-JNIEXPORT jstring JNICALL Java_Hello_hello(JNIEnv *env, jobject obj, jstring name) {
+JNIEXPORT jstring JNICALL Java_Greeter_hello(JNIEnv *env, jobject obj, jstring name) {
   const char * nameBuffer = (*env)->GetStringUTFChars(env, name, NULL);
 
   const char * helloBuffer = hello(nameBuffer);

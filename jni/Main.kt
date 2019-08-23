@@ -1,3 +1,3 @@
 fun main() {
-  println(Hello().hello("Matt"))
+  println(Greeter().hello("Matt"))
 }
