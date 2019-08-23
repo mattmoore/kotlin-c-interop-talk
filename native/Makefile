@@ -13,18 +13,18 @@ cinterop: prepare
 kotlin-shared: prepare
 	@echo "Building Kotlin code."
 	@kotlinc-native \
-		-o build/program \
+		-o build/hello \
 		-l build/libgreeter.klib \
 		-linker-options /usr/local/lib/libgreeter.dylib \
 		*.kt
 
 kotlin-static: prepare
 	@echo "Building Kotlin code."
-	@kotlinc-native -o build/program -l build/libgreeter.klib *.kt
+	@kotlinc-native -o build/hello -l build/libgreeter.klib *.kt
 
 clean:
 	@rm -rf build
 	@echo "Cleaned."
 
 run:
-	@build/program.kexe ${ARGS}
+	@build/hello.kexe ${ARGS}
