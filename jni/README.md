@@ -49,3 +49,20 @@ Next, we're specifying header files with the `-I` options. Those are the paths c
 Finally, we specify the `-L.` option to specify the current directory where our original `libhello.dylib` exists, and the `-lhello` option specifies the name of the original `libhello.dylib` file.
 
 This will create a `libhello_jni.dylib` shared library that will translate the calls from the JVM to our C code, and back again.
+
+## Create Kotlin C-Interop Class
+
+Now we can create our Kotlin class to load the `libhello_jni.dylib` library and call its `hello` function. Create a `Hello.kt` file:
+
+```kotlin
+class Hello {
+  init {
+    System.loadLibrary("hello_jni")
+  }
+  external fun hello(name: String): String
+}
+```
+
+The first key part here is `System.loadLibrary` where we pass in the name of the JNI library we just created. Note that the string name we pass in should exclude the `lib` and `.dylib` portions of the shared library, as `System.loadLibrary` automatically adds those in.
+
+The next important part is the external `hello` function we're declaring. By putting the `external` keyword in front of the function, Kotlin will look up the implementation of the function from within the shared library.
