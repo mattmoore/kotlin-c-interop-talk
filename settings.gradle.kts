@@ -9,4 +9,4 @@
 
 rootProject.name = "kotlin-cinterop-talk"
 
-include("lib", "greeter")
+include("lib", "greeter", "greeter_jni")

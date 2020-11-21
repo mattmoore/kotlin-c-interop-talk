@@ -1,4 +1,4 @@
-#include "greeter_jni.h"
+#include "GreeterJni.h"
 
 JNIEXPORT jstring JNICALL Java_Greeter_hello(JNIEnv *env, jobject obj, jstring name) {
   const char * nameBuffer = (*env)->GetStringUTFChars(env, name, NULL);
