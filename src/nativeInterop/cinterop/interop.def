@@ -1,9 +1,15 @@
 package = greeter
 
-headers = greeter.h
+headers = Greeter.h
 
-compilerOpts.osx = -I/usr/local/include
-linkerOpts.osx = -L/usr/local/lib
+#compilerOpts.osx = -I/usr/local/include
+#linkerOpts.osx = -L/usr/local/lib
 
-libraryPaths = /usr/local/lib
-staticLibraries = libgreeter.a
+#libraryPaths = /usr/local/lib
+#staticLibraries = libgreeter.a
+
+compilerOpts.osx = -I/Users/mattmoore/source/kotlin-cinterop-talk/greeter/include
+linkerOpts.osx = -L/Users/mattmoore/source/kotlin-cinterop-talk/greeter/lib
+
+libraryPaths = /Users/mattmoore/source/kotlin-cinterop-talk/greeter/lib
+staticLibraries = libgreeter.dylib

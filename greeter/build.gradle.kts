@@ -5,13 +5,12 @@ plugins {
 library {
   binaries.configureEach(CppStaticLibrary::class.java) {
     compileTask.get().compilerArgs.add("-std=c++2a")
+    compileTask.get().compilerArgs.add("-fdeclspec")
   }
   binaries.configureEach(CppSharedLibrary::class.java) {
     compileTask.get().compilerArgs.add("-std=c++2a")
+    compileTask.get().compilerArgs.add("-fdeclspec")
   }
-  source.from(file("src"))
-  privateHeaders.from(file("src"))
-  publicHeaders.from(file("include"))
   linkage.set(listOf(Linkage.STATIC, Linkage.SHARED))
   targetMachines.set(listOf(machines.macOS.x86_64))
 }

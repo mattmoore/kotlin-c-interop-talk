@@ -7,6 +7,10 @@ repositories {
   mavenCentral()
 }
 
+dependencies {
+  project(":greeter")
+}
+
 kotlin {
   macosX64("native") {
     val main by compilations.getting
