@@ -1,15 +1,8 @@
-#package = greeter
-#
-#headers = Greeter.h
-#
-##compilerOpts.osx = -I/usr/local/include
-##linkerOpts.osx = -L/usr/local/lib
-#
-##libraryPaths = /usr/local/lib
-##staticLibraries = libgreeter.a
-#
-#compilerOpts.osx = -I/Users/mattmoore/source/kotlin-cinterop-talk/greeter-jni/src/main/cpp/public
-#linkerOpts.osx = -L/Users/mattmoore/source/kotlin-cinterop-talk/greeter-jni/build/lib/main/debug/shared
-#
-#libraryPaths = -I/Users/mattmoore/source/kotlin-cinterop-talk/greeter-jni/src/main/cpp/public
-#staticLibraries = libgreeter-jni.a
+package = greeter
+
+headers = GreeterJni.h
+
+compilerOpts.osx = -I/Library/Java/JavaVirtualMachines/adoptopenjdk-15.jdk/Contents/Home/include -I/Library/Java/JavaVirtualMachines/adoptopenjdk-15.jdk/Contents/Home/include/darwin -I/Users/mattmoore/source/kotlin-cinterop-talk/greeter/src/main/public -I/Users/mattmoore/source/kotlin-cinterop-talk/greeter-jni/src/main/public
+linkerOpts.osx = -L/Users/mattmoore/source/kotlin-cinterop-talk/greeter/build/lib/main/debug/shared -L/Users/mattmoore/source/kotlin-cinterop-talk/greeter-jni/build/lib/main/debug/shared
+
+libraryPaths = /Users/mattmoore/source/kotlin-cinterop-talk/greeter/build/lib/main/debug/shared /Users/mattmoore/source/kotlin-cinterop-talk/greeter-jni/src/main/public

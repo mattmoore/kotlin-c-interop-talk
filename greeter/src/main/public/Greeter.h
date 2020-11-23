@@ -1,4 +1,4 @@
-#include <string>
-#include <iostream>
+#include <string.h>
+#include <stdio.h>
 
-extern "C" const char * hello(const char * name);
+const char * hello(const char * name);

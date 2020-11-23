@@ -1,5 +1,13 @@
 #include "Greeter.h"
 
-extern "C" const char * hello(const char * name) {
-  return std::string("Hello, " + std::string(name) + ".").c_str();
+const char * hello(const char * name) {
+  char * helloBuffer;
+  sprintf(helloBuffer, "Hello, %s.", name);
+  return helloBuffer;
 }
+
+//char * hello(const char * name) {
+//  char * helloBuffer = (char *)malloc(0);
+//  sprintf(helloBuffer, "Hello, %s.", name);
+//  return helloBuffer;
+//}
