@@ -8,7 +8,7 @@ repositories {
 }
 
 dependencies {
-  project(":greeter")
+  project(":greeter-jni")
 }
 
 kotlin {

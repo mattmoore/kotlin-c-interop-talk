@@ -1,15 +1,15 @@
-package = greeter
-
-headers = Greeter.h
-
-#compilerOpts.osx = -I/usr/local/include
-#linkerOpts.osx = -L/usr/local/lib
-
-#libraryPaths = /usr/local/lib
-#staticLibraries = libgreeter.a
-
-compilerOpts.osx = -I/Users/mattmoore/source/kotlin-cinterop-talk/greeter/include
-linkerOpts.osx = -L/Users/mattmoore/source/kotlin-cinterop-talk/greeter/lib
-
-libraryPaths = /Users/mattmoore/source/kotlin-cinterop-talk/greeter/lib
-staticLibraries = libgreeter.dylib
+#package = greeter
+#
+#headers = Greeter.h
+#
+##compilerOpts.osx = -I/usr/local/include
+##linkerOpts.osx = -L/usr/local/lib
+#
+##libraryPaths = /usr/local/lib
+##staticLibraries = libgreeter.a
+#
+#compilerOpts.osx = -I/Users/mattmoore/source/kotlin-cinterop-talk/greeter-jni/src/main/cpp/public
+#linkerOpts.osx = -L/Users/mattmoore/source/kotlin-cinterop-talk/greeter-jni/build/lib/main/debug/shared
+#
+#libraryPaths = -I/Users/mattmoore/source/kotlin-cinterop-talk/greeter-jni/src/main/cpp/public
+#staticLibraries = libgreeter-jni.a
