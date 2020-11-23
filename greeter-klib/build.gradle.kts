@@ -1,5 +1,5 @@
 plugins {
-  kotlin("multiplatform") version "1.4.20"
+  kotlin("multiplatform")
 }
 
 repositories {
@@ -8,12 +8,20 @@ repositories {
 }
 
 dependencies {
-  project(":greeter-klib")
+  project(":greeter-jni")
   commonMainImplementation(kotlin("stdlib-jdk8"))
 }
 
 kotlin {
   jvm()
+  macosX64 {
+    val main by compilations.getting
+    val interop by main.cinterops.creating
+
+    binaries {
+      executable()
+    }
+  }
 }
 
 tasks.withType<Wrapper> {
