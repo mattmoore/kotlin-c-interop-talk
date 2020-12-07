@@ -1,5 +1,7 @@
 plugins {
-  kotlin("multiplatform") version "1.4.20"
+  id("org.jetbrains.kotlin.jvm") version "1.4.20"
+  id("com.github.johnrengelman.shadow") version "5.0.0"
+  application
 }
 
 repositories {
@@ -8,12 +10,11 @@ repositories {
 }
 
 dependencies {
-  project(":greeter-klib")
-  commonMainImplementation(kotlin("stdlib-jdk8"))
+  implementation(project(":greeter-klib"))
 }
 
-kotlin {
-  jvm()
+application {
+  mainClassName = "io.mattmoore.kotlin.playground.cinterop.MainKt"
 }
 
 tasks.withType<Wrapper> {
