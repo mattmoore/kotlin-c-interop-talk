@@ -46,13 +46,13 @@ You might be wondering why we need header files, given that it appears we're def
 Finally, let's run our compiler to create the shared library. Note this is for Macos:
 
 ```shell
-gcc -o libgreeter.dylib -shared -fPIC greeter.c
+gcc -o libgreeter.dylib -shared -fPIC Greeter.c
 ```
 
 If you want to compile the shared library for linux, we just have to change the part `-o libgreeter.dylib` to `-o libgreeter.so`:
 
 ```shell
-gcc -o libgreeter.so -shared -fPIC greeter.c
+gcc -o libgreeter.so -shared -fPIC Greeter.c
 ```
 
 This will convert the `greeter.c` file into a file named `libgreeter.dylib`, which is the final shared library. Notice we don't have to specify the `greeter.h` file in the command; this is because `gcc` already knows about it through the `#include "greeter.h"` statement on the first line of `greeter.c`. Once this is done, our shared library is ready to share!
