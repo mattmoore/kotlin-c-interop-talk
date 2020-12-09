@@ -1,8 +1,8 @@
 package = greeter
 
-headers = GreeterJni.h
+headers = greeter_jni.h
 
-compilerOpts.osx = -I/Library/Java/JavaVirtualMachines/adoptopenjdk-15.jdk/Contents/Home/include -I/Library/Java/JavaVirtualMachines/adoptopenjdk-15.jdk/Contents/Home/include/darwin -I/Users/mattmoore/source/kotlin-cinterop-talk/greeter/src/main/public -I/Users/mattmoore/source/kotlin-cinterop-talk/greeter-jni/src/main/public
-linkerOpts.osx = -L/Users/mattmoore/source/kotlin-cinterop-talk/greeter/build/lib/main/debug/shared -L/Users/mattmoore/source/kotlin-cinterop-talk/greeter-jni/build/lib/main/debug/shared
+compilerOpts.osx = -I/Library/Java/JavaVirtualMachines/adoptopenjdk-15.jdk/Contents/Home/include -I/Library/Java/JavaVirtualMachines/adoptopenjdk-15.jdk/Contents/Home/include/darwin -I/Users/mattmoore/source/kotlin-cinterop-talk/greeter/include -I/Users/mattmoore/source/kotlin-cinterop-talk/greeter-jni/include
+linkerOpts.osx = -L/Users/mattmoore/source/kotlin-cinterop-talk/greeter/build -L/Users/mattmoore/source/kotlin-cinterop-talk/greeter-jni/build
 
-libraryPaths = /Users/mattmoore/source/kotlin-cinterop-talk/greeter/build/lib/main/debug/shared /Users/mattmoore/source/kotlin-cinterop-talk/greeter-jni/src/main/public
+libraryPaths = /Users/mattmoore/source/kotlin-cinterop-talk/greeter/build /Users/mattmoore/source/kotlin-cinterop-talk/greeter-jni/build

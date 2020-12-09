@@ -4,7 +4,6 @@ Kotlin is a great language! But what if you want to call an existing native libr
 
 There are two paradigms to consider when using Kotlin to interact with native code: Kotlin on the JVM and Kotlin Native. While the heaviest use of Kotlin is in the world of the Java Virtual Machine, there is an increasing interest and set of use-cases for Kotlin Native. JetBrains has clearly shown they are pursuing Kotlin native fairly aggressively.
 
+## [A Primer on Native Libraries](greeter)
 
-## [A Primer on Native Libraries](libgreeter)
-
-## [Bridging The Shared Library to Kotlin JVM](jni)
+## [Bridging The Shared Library to Kotlin JVM](greeter-jni)

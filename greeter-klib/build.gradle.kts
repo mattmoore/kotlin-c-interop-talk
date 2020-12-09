@@ -8,7 +8,8 @@ repositories {
 }
 
 dependencies {
-  project(":greeter-jni")
+//  project(":greeter-jni")
+  commonMainImplementation(files("greeter-jni/build/libgreeter.dylib"))
   commonMainImplementation(kotlin("stdlib-jdk8"))
 }
 

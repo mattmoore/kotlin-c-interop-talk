@@ -1,0 +1,2 @@
+#define GreeterJni_VERSION_MAJOR @Greeter_VERSION_MAJOR@
+#define GreeterJni_VERSION_MINOR @Greeter_VERSION_MINOR@
