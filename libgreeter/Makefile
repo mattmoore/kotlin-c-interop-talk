@@ -15,6 +15,9 @@ libgreeter-shared: prepare
 	@echo "Building libgreeter shared library."
 	@gcc -o build/libgreeter.dylib -shared -fPIC greeter.c
 
+sign:
+	@codesign -f -s 2LX8Z7X9NZ --timestamp -v build/libgreeter.dylib
+
 clean:
 	@rm -rf build
 	@echo "Cleaned."

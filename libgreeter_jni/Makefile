@@ -8,10 +8,15 @@ libgreeter_jni-shared: prepare
 	@gcc \
 		-o build/libgreeter_jni.dylib \
 		-shared -fPIC \
-		-I/Library/Java/JavaVirtualMachines/openjdk-12.0.1.jdk/Contents/Home/include \
-		-I/Library/Java/JavaVirtualMachines/openjdk-12.0.1.jdk/Contents/Home/include/darwin \
+		-I/Library/Java/JavaVirtualMachines/adoptopenjdk-15.jdk/Contents/Home/include \
+		-I/Library/Java/JavaVirtualMachines/adoptopenjdk-15.jdk/Contents/Home/include/darwin \
+		-I/Users/mattmoore/source/kotlin-cinterop-talk/libgreeter \
+		-L/Users/mattmoore/source/kotlin-cinterop-talk/libgreeter/build \
 		-lgreeter \
 		greeter_jni.c
+
+sign:
+	@codesign -f -s 2LX8Z7X9NZ --timestamp -v build/libgreeter_jni.dylib
 
 clean:
 	@rm -rf build
