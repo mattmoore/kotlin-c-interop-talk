@@ -1,7 +1,5 @@
 plugins {
   id("org.jetbrains.kotlin.jvm") version "1.4.20"
-  id("com.github.johnrengelman.shadow") version "5.0.0"
-  application
 }
 
 repositories {
@@ -11,10 +9,7 @@ repositories {
 
 dependencies {
   implementation(project(":greeter-klib"))
-}
-
-application {
-  mainClassName = "io.mattmoore.kotlin.playground.cinterop.MainKt"
+  implementation(project(":jvm-app"))
 }
 
 tasks.withType<Wrapper> {

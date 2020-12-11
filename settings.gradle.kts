@@ -1,6 +1,6 @@
 rootProject.name = "kotlin-cinterop-talk"
 
 include(
-  "greeter",
-  "greeter-klib"
+  "greeter-klib",
+  "jvm-app"
 )

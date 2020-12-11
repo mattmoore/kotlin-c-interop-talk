@@ -8,8 +8,8 @@ repositories {
 }
 
 dependencies {
-  commonMainImplementation(files("greeter-jni/build/libgreeter.dylib"))
   commonMainImplementation(kotlin("stdlib-jdk8"))
+  commonMainImplementation(files("greeter-jni/build/libgreeter.dylib"))
 }
 
 kotlin {
@@ -43,9 +43,4 @@ kotlin {
       )
     }
   }
-}
-
-tasks.withType<Wrapper> {
-  gradleVersion = "6.7.1"
-  distributionType = Wrapper.DistributionType.ALL
 }
