@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.compilerRunner.processCompilerOutput
-
 plugins {
   kotlin("multiplatform")
 }
@@ -26,8 +24,21 @@ kotlin {
       includeDirs(
         Callable { File(javaHome, "include") },
         Callable { File(javaHome, "include/darwin") },
+        Callable { File("${project.rootDir}/greeter-jni/include") }
+      )
+    }
+  }
+
+  linuxX64() {
+    val main by compilations.getting
+    val interop by main.cinterops.creating
+
+    compilations["main"].cinterops.create("greeter-jni") {
+      val javaHome = File(System.getProperty("java.home")!!)
+      packageName = "io.mattmoore.kotlin.playground.cinterop"
+      includeDirs(
+        Callable { File(javaHome, "include") },
         Callable { File(javaHome, "include/linux") },
-        Callable { File(javaHome, "include/win32") },
         Callable { File("${project.rootDir}/greeter-jni/include") }
       )
     }
