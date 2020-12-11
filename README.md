@@ -7,3 +7,5 @@ There are two paradigms to consider when using Kotlin to interact with native co
 ## [A Primer on Native Libraries](greeter)
 
 ## [Bridging The Shared Library to Kotlin JVM](greeter-jni)
+
+## [Call Native Library from Kotlin Native](native-app)
