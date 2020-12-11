@@ -4,14 +4,14 @@ Lots of existing native code has been created and optimized for use on various o
 
 Kotlin has multiplatform support. Here we'll only discuss Kotlin JVM and Kotlin Native, though there are other platforms. When bridging a native shared library over to Kotlin JVM vs Native, we have to handle the process a little differently. As a side note, bridging native libraries to Kotlin Native is considerably easier than with Kotlin JVM.
 
-To begin with, let's build an example greeter library in C that we can then share with Kotlin JVM or Kotlin Native. We'll need to do the following:
+To begin with, I've created an example greeter library in C that we can then share with Kotlin JVM or Kotlin Native. We'll need to do the following:
 
-1. Create a C header file called `greeter.h`.
-1. Create a C implementation file called `greeter.c`.
-1. Compile these files using GCC (GNU C Compiler).
-1. Test our library out by using it in an executable program.
+1. Create a C header file called [include/greeter.h](include/greeter.h).
+1. Create a C implementation file called [src/greeter.c](src/greeter.c).
+1. Use cmake to compile the library with [CMakeLists.txt](CMakeLists.txt).
+1. Test shared library by linking with an executable program.
 
-## Step 1: `greeter.h`
+## Step 1: [include/greeter.h](include/greeter.h)
 
 In the C language, a header file contains a definition of the function signatures. A function signature is the name of the function, the parameters it accepts, and the data type it returns.
 
@@ -23,7 +23,7 @@ In the C language, a header file contains a definition of the function signature
 char * hello(const char * name);
 ```
 
-## Step 2: `greeter.c`
+## Step 2: [src/greeter.c](src/greeter.c)
 
 Next, we create our greeter.c file. This is called an "implementation file". This defines the details that go inside our function.
 
@@ -43,52 +43,52 @@ You might be wondering why we need header files, given that it appears we're def
 
 ## Step 3: Compile The Shared Library
 
-Finally, let's run our compiler to create the shared library. Note this is for Macos:
+Finally, let's run `cmake` to compile the library:
 
 ```shell
-gcc -o libgreeter.dylib -shared -fPIC greeter.c
+mkdir build
+cd build
+cmake ..
+make
 ```
 
-If you want to compile the shared library for linux, we just have to change the part `-o libgreeter.dylib` to `-o libgreeter.so`:
+You should see a file `build/libgreeter.dylib`, which is the shared library.
 
-```shell
-gcc -o libgreeter.so -shared -fPIC greeter.c
-```
-
-This will convert the `greeter.c` file into a file named `libgreeter.dylib`, which is the final shared library. Notice we don't have to specify the `greeter.h` file in the command; this is because `gcc` already knows about it through the `#include "greeter.h"` statement on the first line of `greeter.c`. Once this is done, our shared library is ready to share!
-
-## Step 4: Test Our Library!
+## Step 4: Linking and testing the library
 
 Before we get into the details of bridging the library to Kotlin, let's test that our shared library works natively within C, just to make sure we've built it correctly.
 
-Let's make another file called `main.c`:
+Let's make another file [src/hello.c](src/hello.c) that will call on our shared library:
 
 ```c
 #include <stdio.h>
-#include "greeter.h"
+
+const char * hello(const char *);
 
 int main(int argc, char *argv[]) {
-  printf("%s\n", greeter(argv[1]));
+  printf("%s\n", hello(argv[1]));
 }
 ```
 
-Then compile `main.c`:
+I've already added [src/hello.c](src/hello.c). It gets automatically compiled as part of the [CMakeLists.txt](CMakeLists.txt) file used to build the shared library:
 
 ```shell
-gcc -o greeter -I. -L. -lgreeter main.c
+cd build/
+cmake ..
+make
 ```
 
-This creates an executable file called `greeter`. We can run it now:
+This creates an executable file called `hello`. We can run it now:
 
 ```shell
-./greet Matt
+./hello Matt
 Hello, Matt.
 ```
 
 Let's talk about the compiler options as they'll be important to understand when we bridge libraries with Kotlin.
 
-`-I.` This tells the gcc compiler where our `greeter.h` file is located. It has a `.` after the `-I`, which points to the current directory.
-
-`-L.` Specifies the location where the compiled `libgreeter.dylib` file exists (or `libgreeter.so` on Linux). As with the `-I` option, it's in the current directory, so we put a `.`.
+`-L.` Specifies the location where the compiled `libgreeter.dylib` file exists (or `libgreeter.so` on Linux).
 
 `-lgreeter` This tells the compiler the name of our library. In this case, it is called `greeter`. Notice this doesn't match the full name of `libgreeter.dylib`. Whenever referencing a shared library name, we omit the `lib` and `.dylib` parts of the name. So in this case, `libgreeter.dylib` becomes `greeter`.
+
+## [Next Steps: Create JNI Interface to Kotlin](../greeter-jni)
